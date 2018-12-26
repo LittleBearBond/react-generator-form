@@ -1,3 +1,5 @@
-# react-antdfrom
+# react-generator-form
 
-react-antdfrom
+> 通过配置生成表单
+
+## [examples](./examples/demo1/home.js)
