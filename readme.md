@@ -4,6 +4,8 @@
 
 ## [examples](./examples/demo1/home.js)
 
+![demo](./i/demo1@2x.png)
+
 ## Development
 
 ```bash
