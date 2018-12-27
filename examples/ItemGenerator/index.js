@@ -1,5 +1,13 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import Layout from './home';
+import React from 'react';
+import 'antd/dist/antd.css'
 
-ReactDOM.render(<Layout />, document.getElementById('root'));
+import GeneratorForm from './GeneratorForm'
+import OldForm from './OldForm'
+
+const Home = () => <React.Fragment>
+    <GeneratorForm />
+    <OldForm />
+</React.Fragment>
+
+ReactDOM.render(<Home />, document.getElementById('root'));
