@@ -17,7 +17,7 @@ npm start
 
 ![demo](./i/demo1@2x.png)
 
-### [使用antd原生方式开发的表单](./examples/ItemGenerator/OldForm.js)
+### [使用antd原生方式开发表单](./examples/ItemGenerator/OldForm.js)
 
 ```js
 import React, { Component } from 'react'
@@ -188,7 +188,7 @@ export default Form.create()(OldForm)
 
 ### 使用react-generator-from开发表单
 
-#### [config](./examples/ItemGenerator/config.js)
+#### [config 表单配置](./examples/ItemGenerator/config.js)
 
 ```js
 import React from 'react'
@@ -361,7 +361,7 @@ export const items = [
 ];
 ```
 
-#### [GeneratorForm](./examples/ItemGenerator/GeneratorForm.js)
+#### [GeneratorForm，传入配置，调用ItemGenerator，直接创建一个表单](./examples/ItemGenerator/GeneratorForm.js)
 
 ```js
 import React, { Component } from 'react'
