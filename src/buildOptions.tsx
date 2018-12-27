@@ -12,7 +12,7 @@ const { Option } = Select;
  *
  * @param {Array}} data 构建Options
  */
-const buildOptions = (data: Array<any>, { key = 'id', value = 'value', disableSelect = [] } = {}) => {
+export const buildOptions = (data: Array<any>, { key = 'id', value = 'value', disableSelect = [] } = {}) => {
     const disableKeyValues = disableSelect.reduce((obj: any, next) => {
         obj[next] = true;
         return obj;

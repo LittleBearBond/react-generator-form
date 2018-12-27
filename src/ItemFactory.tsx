@@ -9,6 +9,8 @@ const class2type: any = {};
 const { TextArea } = Input
 const { Group: CheckboxGroup } = Checkbox
 const { Group: RadioGroup } = Radio
+const FormItem = Form.Item;
+
 'Boolean Number String Function Array Date RegExp Object Error'.split(' ').forEach(val => {
     class2type['[object ' + val + ']'] = val.toLowerCase();
 });
@@ -28,11 +30,13 @@ const getStyle = (props: ItemProps = {}, style: React.CSSProperties = {}) => {
     }, style, props.style || {});
 };
 
-const Factory = (config: any): void => {
-    let template;
-    const { type = 'text', label = 'title', props = {}, data = [], params = {} } = config;
+const getTemplate = (config: any) => {
+    const { type = 'input', label = 'title', props = {}, data = [], params = {} } = config;
     const TypeMap: any = {
+        // placeholder default  label
         number: <InputNumber placeholder={label} {...props} style={getStyle(props)} />,
+
+        input: <Input placeholder={label} {...props} />,
 
         textarea: <TextArea placeholder={label} {...props} />,
 
@@ -44,7 +48,7 @@ const Factory = (config: any): void => {
 
         radiogroup: <RadioGroup {...props} />,
 
-        'select': (() => {
+        select: (() => {
             if (Array.isArray(data)) {
                 if (data.length > 0 && isType(data[0]) === 'object') {
                     return buildIdValueOptions(data, {
@@ -52,7 +56,6 @@ const Factory = (config: any): void => {
                         ...props
                     }, params);
                 }
-
                 return buildArrOptions(data, {
                     placeholder: label,
                     ...props
@@ -64,28 +67,26 @@ const Factory = (config: any): void => {
 
         slider: <Slider {...props} />,
 
-        datepicker: <DatePicker placeholder={label} {...props} style={getStyle(props)} />,
+        datepicker: <DatePicker {...props} style={getStyle(props)} />,
 
-        monthpicker: <DatePicker.MonthPicker placeholder={label} {...props} style={getStyle(props)} />,
+        monthpicker: <DatePicker.MonthPicker {...props} style={getStyle(props)} />,
 
-        rangepicker: <DatePicker.RangePicker placeholder={label} {...props} style={getStyle(props)} />,
+        rangepicker: <DatePicker.RangePicker {...props} style={getStyle(props)} />,
 
-        timepicker: <TimePicker placeholder={label} {...props} style={getStyle(props)} />
+        timepicker: <TimePicker {...props} style={getStyle(props)} />
     };
 
-    template = TypeMap[type.toLowerCase()];
+    return TypeMap[type.toLowerCase()];
+}
 
-    if (!template) {
-        template = <Input type={type || 'text'} placeholder={label} {...props} />;
+const Factory = (config: any): JSX.Element => {
+    if (config.template) {
+        return config.template
     }
-
-    config.template && (template = config.template);
-
-    return template;
+    return getTemplate(config);
 };
 
 const render = (obj: any): JSX.Element | null => {
-    const FormItem = Form.Item;
     const { form, config } = obj.props;
     const { getFieldDecorator } = form;
     const { colProps = {}, item } = config;
