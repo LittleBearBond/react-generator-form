@@ -20,7 +20,7 @@ const status = ['全部', '已处理', '未处理', '处理完成'];
     }
 </Select>
 
-const status = [
+const statusIdValue = [
     {
         id: 1,
         value: '小明'
@@ -37,7 +37,7 @@ const status = [
 
 <Select defaultValue="0" style={{ width: 120 }}>
     {
-        status.map(({ id, value }) => <Option value={id} key={id} disabled={2 === value}> {value} </Option>)
+        statusIdValue.map(({ id, value }) => <Option value={id} key={id} disabled={2 === value}> {value} </Option>)
     }
 </Select>
 ]
@@ -52,7 +52,7 @@ const status = ['全部','已处理','未处理','处理完成']
 {
     buildArrOptions(status, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
 }
-const status = [
+const statusIdValue = [
     {
         id: 1,
         value: '小明'
@@ -66,7 +66,7 @@ const status = [
         value: '小王'
     }
 ];
-wrapBuildOptions(status, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
+wrapBuildOptions(statusIdValue, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
 ```
 
 ## [other examples](./examples/buildOptions/index.js)
