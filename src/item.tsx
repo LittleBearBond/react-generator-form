@@ -12,6 +12,10 @@ export default class SingleItem extends React.PureComponent<any> {
             formItemProps: PropTypes.object,
             item: PropTypes.shape({
                 id: PropTypes.string.isRequired,
+                key: PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.number
+                ]),
                 label: PropTypes.string,
                 type: PropTypes.string,
                 template: PropTypes.oneOfType([

@@ -24,7 +24,7 @@ const defaultOptions = {
  * @class ItemGenerator
  * @extends {React.PureComponent<ItemGeneratorProp, any>}
  */
-export default class ItemGenerator extends React.PureComponent<ItemGeneratorProp, any> {
+class ItemGenerator extends React.PureComponent<ItemGeneratorProp, any> {
     /**
      * 类型校验
      *
@@ -65,12 +65,17 @@ export default class ItemGenerator extends React.PureComponent<ItemGeneratorProp
         if (!Array.isArray(items) || !items.length) {
             return null;
         }
-        return items.map((data: any, index: number) => <Item {...this.props} config={{
-            ...data,
-            formItemProps: extend(true, {}, formItemProps, data.formItemProps || {}),
-            colProps: extend(true, {}, colProps, data.colProps || {})
-        }} key={index} />)
+        return items.map((data: any, index: number) => <Item {...props}
+            config={{
+                ...data,
+                formItemProps: extend(true, {}, formItemProps, data.formItemProps || {}),
+                colProps: extend(true, {}, colProps, data.colProps || {})
+            }}
+            key={typeof data.key !== 'undefined' ? data.key : index}
+        />)
     }
 }
 
 export * from './src/layout'
+export * from './src/buildOptions'
+export default ItemGenerator
