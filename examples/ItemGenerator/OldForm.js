@@ -29,7 +29,6 @@ const requiredRules = {
     ]
 }
 
-
 class OldForm extends Component {
     submitForm = () => {
         this.props.form.validateFields(console.log)
