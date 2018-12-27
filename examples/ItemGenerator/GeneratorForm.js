@@ -1,18 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react'
 import ItemGenerator from '../../index';
 import { Form, Card, Row, Col, Button } from 'antd';
 import { items } from './config';
 
-import 'antd/dist/antd.css'
-
-class Home extends PureComponent {
+class GeneratorForm extends Component {
     submitForm = () => {
         this.props.form.validateFields(console.log)
     }
     render() {
         const { form } = this.props;
+
         return (
-            <Card title="react antd form demo">
+            <Card title="ItemGenerator Form">
                 <Form style={{ background: '#fff', padding: '10px' }}>
                     <Row>
                         <ItemGenerator form={form}
@@ -23,8 +22,8 @@ class Home extends PureComponent {
                     </Row>
                 </Form>
             </Card>
-        );
+        )
     }
 }
 
-export default Form.create()(Home);
+export default Form.create()(GeneratorForm)

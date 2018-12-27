@@ -15,12 +15,10 @@ export const items = [
             label: '工单id',
             options: {
                 initialValue: '',
-                rule: [
-                    {
-                        type: 'number',
-                        message: '请输入数字'
-                    }
-                ]
+                rules: [{
+                    type: 'number',
+                    message: '请输入数字'
+                }]
             },
             type: 'number'
         }
@@ -31,7 +29,7 @@ export const items = [
             label: '订单id',
             options: {
                 // 设置初始值
-                initialValue: '222', // 只针对input
+                initialValue: '666', // 只针对input
             }
         }
     },
@@ -57,6 +55,7 @@ export const items = [
             },
             // 下拉框默认渲染id value [{id:'',value:''}]
             // 如果不是id value 需要手动指定相应的key
+            // 一般这种下拉框数据由后端从统一配置接口吐出
             data: [
                 {
                     id: 22,
@@ -76,7 +75,8 @@ export const items = [
                 isShowPleaseSel: true
             },
             props: {
-                mode: 'multiple'
+                mode: 'multiple',
+                placeholder: '请选择，可多选'
             }
         }
     },
@@ -122,7 +122,7 @@ export const items = [
                 ...requiredRules
             },
             // 直接使用数组，数组的index 会作为value提交到后端
-            data: ['未处理', '已处理', '处理中'],
+            data: ['未处理', '处理中', '已处理'],
         }
     },
     {
