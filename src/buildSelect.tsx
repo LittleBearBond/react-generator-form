@@ -1,9 +1,3 @@
-/**
- * @author xiongjian
- * @create date 2017-08-22 05:30:53
- * @modify date 2017-08-22 05:30:53
- * @desc [description]
-*/
 import * as React from 'react';
 import { Select } from 'antd';
 const { Option } = Select;
