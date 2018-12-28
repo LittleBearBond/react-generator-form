@@ -28,12 +28,16 @@ export const buildOptions = (data: Array<any>, { key = 'id', value = 'value', di
  * @param {Object}} props 下拉框props配置
  * @param {Bool} isShowPleaseSel 是显示请选择，默认显示
  */
-export const wrapBuildOptions = (data: Array<any> = [], props: any = {}, { isShowPleaseSel = true, ...otherProps } = {}) => {
+export const buildSelect = (data: Array<any> = [], props: any = {}, { isShowPleaseSel = true, ...otherProps } = {}): JSX.Element => {
     const { length } = data
     if (!Array.isArray(data) || !length) {
         return <Select {...props} >
             <Option value="" key="">请选择</Option>
         </Select>
+    }
+    // not Array<object>
+    if (data[0] !== Object(data[0])) {
+        return buildArrOptions(data, props, { isShowPleaseSel, ...otherProps, })
     }
     if (length >= 5 && props.isShowSearch !== false) {
         props = {
@@ -63,7 +67,7 @@ export const wrapBuildOptions = (data: Array<any> = [], props: any = {}, { isSho
  * @param {Object} props 下拉框props配置
  * @param {Object} 可以手动设置数组单个值里面那个key对应option的value,哪个value key对应option的label
        */
-export const buildIdValueOptions = wrapBuildOptions
+export const buildIdValueOptions = buildSelect
 
 type valueType = number | string
 type objType = { id: valueType, value: valueType }
@@ -74,7 +78,7 @@ type objType = { id: valueType, value: valueType }
 * @param {Object}} props 下拉框props配置
 * @param {Bool} isShowPleaseSel 是显示请选择，默认显示
 */
-export const buildArrOptions = (data: any = [], props = {}, options: any) => {
+export const buildArrOptions = (data: any = [], props = {}, options: any): JSX.Element => {
     const arrData: Array<objType> = data.reduce((arr: Array<objType>, val: valueType, index: number) => {
         const obj: objType = Object.create(null)
         obj['id'] = index;
@@ -82,7 +86,7 @@ export const buildArrOptions = (data: any = [], props = {}, options: any) => {
         arr.push(obj)
         return arr;
     }, []);
-    return wrapBuildOptions(arrData, props, options);
+    return buildSelect(arrData, props, options);
 }
 
-export default buildOptions;
+export default buildSelect;

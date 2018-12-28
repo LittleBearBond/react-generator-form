@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ItemGenerator, { wrapBuildOptions, buildArrOptions } from '../../index'
+import ItemGenerator, { buildSelect } from '../../index'
 import { Card, Form, Row, Col } from 'antd';
 
 import 'antd/dist/antd.css';
@@ -95,47 +95,47 @@ const items = [
 
 class TestBuildOption extends React.Component {
     render() {
-        return <Card title="buildArrOptions demo">
+        return <Card title="buildSelect demo">
             <Form>
                 <Row>
                     <Col>
-                        <h1>buildArrOptions</h1>
+                        <h1>buildSelect</h1>
                         {
                             /**直接初始话一个数组，数组里面的值是显示项，索引是选择的值 */
-                            buildArrOptions(arrItem, selectProps)
+                            buildSelect(arrItem, selectProps)
                         }
                     </Col>
                     <Col>
-                        <h1>wrapBuildOptions</h1>
+                        <h1>buildSelect</h1>
                         {
                             /**直接初始话一个数组Object，数组里面item的value值是显示项，id是选择的值 */
-                            wrapBuildOptions(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选' })
+                            buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选' })
                         }
                         <br />
                     </Col>
                     <Col>
-                        <h1>wrapBuildOptions disableSelect</h1>
+                        <h1>buildSelect disableSelect</h1>
                         {
                             /**直接初始话一个数组Object，数组里面item的value值是显示项，id是选择的值 */
-                            wrapBuildOptions(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选', disableSelect: [3, 5] })
+                            buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选', disableSelect: [3, 5] })
                         }
                         <br />
                     </Col>
                     <Col>
-                        <h1>wrapBuildOptions ; key:'key'  value:'name'</h1>
+                        <h1>buildSelect ; key:'key'  value:'name'</h1>
                         {
                             /**直接初始话一个数组Object，数组里面item的value值是显示项，key是选择的值 */
                             /** 默认id是选之后提交的值，但是可以指定相应的key*/
-                            wrapBuildOptions(arrKeyNameItem, selectProps, { key: 'key', value: 'name' })
+                            buildSelect(arrKeyNameItem, selectProps, { key: 'key', value: 'name' })
                         }
                         <br />
                     </Col>
                     <Col>
-                        <h1>wrapBuildOptions = wrapBuildOptions；key:'key'  value:'name'</h1>
+                        <h1>buildSelect = buildSelect；key:'key'  value:'name'</h1>
                         {
                             /**直接初始话一个数组Object，数组里面item的value值是显示项，key是选择的值 */
                             /** 默认id是选之后提交的值，但是可以指定相应的key*/
-                            wrapBuildOptions(arrKeyNameItem, selectProps, { key: 'key', value: 'name' })
+                            buildSelect(arrKeyNameItem, selectProps, { key: 'key', value: 'name' })
                         }
                         <br />
                         <br />

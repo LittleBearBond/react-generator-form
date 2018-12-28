@@ -1,28 +1,13 @@
 import * as React from 'react';
 import { Col, Form, Input, InputNumber, Slider, Switch, Checkbox, Radio, DatePicker, TimePicker } from 'antd';
-import { buildArrOptions, buildIdValueOptions } from './buildOptions';
+import { buildSelect } from './buildSelect';
 import * as extend from 'extend';
 import { ItemProps } from './interface';
 
-const toString = Object.prototype.toString;
-const class2type: any = {};
 const { TextArea } = Input
 const { Group: CheckboxGroup } = Checkbox
 const { Group: RadioGroup } = Radio
 const FormItem = Form.Item;
-
-'Boolean Number String Function Array Date RegExp Object Error'.split(' ').forEach(val => {
-    class2type['[object ' + val + ']'] = val.toLowerCase();
-});
-
-const isType = (obj: any) => {
-    if (obj == null) {
-        return String(obj);
-    }
-    return typeof obj === 'object' || typeof obj === 'function' ?
-        class2type[toString.call(obj)] || 'object' :
-        typeof obj;
-};
 
 const getStyle = (props: ItemProps = {}, style: React.CSSProperties = {}) => {
     return extend(true, {}, {
@@ -49,18 +34,10 @@ const getTemplate = (config: any) => {
         radiogroup: <RadioGroup {...props} />,
 
         select: (() => {
-            if (Array.isArray(data)) {
-                if (data.length > 0 && isType(data[0]) === 'object') {
-                    return buildIdValueOptions(data, {
-                        placeholder: label,
-                        ...props
-                    }, params);
-                }
-                return buildArrOptions(data, {
-                    placeholder: label,
-                    ...props
-                }, { ...params, isShowPleaseSel: params.isShowPleaseSel !== false });
-            }
+            return buildSelect(data, {
+                placeholder: label,
+                ...props
+            }, params);
         })(),
 
         switch: <Switch {...props} />,

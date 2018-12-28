@@ -1,4 +1,4 @@
-# buildOptions
+# buildSelect
 
 ## use Select
 
@@ -43,14 +43,14 @@ const statusIdValue = [
 ]
 ```
 
-## use buildOptions
+## use buildSelect
 
 ```js
-import { wrapBuildOptions, buildArrOptions } from './index'
+import { buildSelect } from './index'
 
 const status = ['全部','已处理','未处理','处理完成']
 {
-    buildArrOptions(status, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
+    buildSelect(status, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
 }
 const statusIdValue = [
     {
@@ -66,13 +66,13 @@ const statusIdValue = [
         value: '小王'
     }
 ];
-wrapBuildOptions(statusIdValue, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
+buildSelect(statusIdValue, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
 ```
 
-## [other examples](./examples/buildOptions/index.js)
+## [other examples](./examples/buildSelect/index.js)
 
 ```js
-import { wrapBuildOptions, buildArrOptions } from './index'
+import { buildSelect } from './index'
 
 // init data
 const initArr = [...new Array(8).keys()];
@@ -98,25 +98,25 @@ const selectProps = {
 }
 ```
 
-### buildArrOptions
+### buildSelect Array<string|number>
 
 ```js
 // 直接初始话一个数组，数组里面的值是显示项，索引是选择的值
-buildArrOptions(arrItem, selectProps)
+buildSelect(arrItem, selectProps)
 ```
 
-### wrapBuildOptions
+### buildSelect Array< object >
 
 ```js
 // 直接初始话一个数组Object，数组里面item的value值是显示项，id是选择的值
 // 第二个参数为select的 props
-wrapBuildOptions(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选' })
+buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选' })
 ```
 
-### wrapBuildOptions key:key  value:name
+### buildSelect key:key  value:name
 
 ```js
 // 初始话一个数组Object，数组里面item的value值是显示项，key是选择的值
 // 默认id是选之后提交的值，value是显示项，但是可以指定相应的key
-wrapBuildOptions(arrKeyNameItem, selectProps, { key: 'key', value: 'name', disableSelect:[3,5]})
+buildSelect(arrKeyNameItem, selectProps, { key: 'key', value: 'name', disableSelect:[3,5]})
 ```

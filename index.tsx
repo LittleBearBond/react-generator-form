@@ -77,5 +77,5 @@ class ItemGenerator extends React.PureComponent<ItemGeneratorProp, any> {
 }
 
 export * from './src/layout'
-export * from './src/buildOptions'
+export * from './src/buildSelect'
 export default ItemGenerator
