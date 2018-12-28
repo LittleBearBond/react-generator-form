@@ -50,7 +50,7 @@ import { buildSelect } from './index'
 
 const status = ['全部','已处理','未处理','处理完成']
 {
-    buildSelect(status, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
+    buildSelect(status, {defaultValue: '0',style:{ width: 120 }}, {disableOptions: [2]})
 }
 const statusIdValue = [
     {
@@ -66,7 +66,7 @@ const statusIdValue = [
         value: '小王'
     }
 ];
-buildSelect(statusIdValue, {defaultValue: '0',style:{ width: 120 }}, {disableSelect: [2]})
+buildSelect(statusIdValue, {defaultValue: '0',style:{ width: 120 }}, {disableOptions: [2]})
 ```
 
 ## [other examples](./examples/buildSelect/index.js)
@@ -118,5 +118,5 @@ buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], 
 ```js
 // 初始话一个数组Object，数组里面item的value值是显示项，key是选择的值
 // 默认id是选之后提交的值，value是显示项，但是可以指定相应的key
-buildSelect(arrKeyNameItem, selectProps, { key: 'key', value: 'name', disableSelect:[3,5]})
+buildSelect(arrKeyNameItem, selectProps, { key: 'key', value: 'name', disableOptions:[3,5]})
 ```

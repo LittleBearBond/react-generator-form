@@ -78,7 +78,7 @@ const items = [
         item: {
             id: 'select3',
             type: 'select',
-            label: 'disableSelect',
+            label: 'disableOptions',
             options: {
                 initialValue: '',
                 ...requiredRules
@@ -87,7 +87,7 @@ const items = [
             params: {
                 key: 'key',
                 value: 'name',
-                disableSelect: [3, 5]
+                disableOptions: [3, 5]
             }
         }
     },
@@ -114,10 +114,10 @@ class TestBuildOption extends React.Component {
                         <br />
                     </Col>
                     <Col>
-                        <h1>buildSelect disableSelect</h1>
+                        <h1>buildSelect disableOptions</h1>
                         {
                             /**直接初始话一个数组Object，数组里面item的value值是显示项，id是选择的值 */
-                            buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选', disableSelect: [3, 5] })
+                            buildSelect(arrIdValItem, { ...selectProps, mode: 'multiple', defaultValue: [], placeholder: '请选择，可多选', disableOptions: [3, 5] })
                         }
                         <br />
                     </Col>
