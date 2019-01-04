@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { Select } from 'antd';
+import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 
 /**
  *
  * @param {Array}} data 构建Options
  */
-export const buildOptions = (data: Array<any>, { key = 'id', value = 'value', disableOptions = [] } = {}) => {
+export const buildOptions = (data: Array<any>, { key = 'id', value = 'value', disableOptions = [], isShowTooltip = false } = {}) => {
     const disableKeyValues = disableOptions.reduce((obj: any, next) => {
         obj[next] = true;
         return obj;
     }, {});
+
     return data.map((item, index) => {
-        return <Option key={`${index}`} value={`${item[key]}`} disabled={item[key] in disableKeyValues}>{item[value]}</Option>
+        return <Option key={item.key || index} value={`${item[key]}`} disabled={item[key] in disableKeyValues}>
+            {
+                isShowTooltip ? <Tooltip title={item.remark || item[value]}>{item[value]}</Tooltip> : item[value]
+            }
+        </Option>
     });
 }
 
