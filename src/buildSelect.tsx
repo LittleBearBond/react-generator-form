@@ -27,7 +27,7 @@ export const buildOptions = (data: Array<any>, { key = 'id', value = 'value', di
  * @param {Object}} props 下拉框props配置
  * @param {Bool} isShowPleaseSel 是显示请选择，默认显示
  */
-export const buildSelect = (data: Array<any> = [], props: any = {}, { isShowPleaseSel = true, ...otherProps } = {}): JSX.Element => {
+export const buildSelect = (data: Array<object> | Array<string | number> = [], props: any = {}, { isShowPleaseSel = true, ...otherProps } = {}): JSX.Element => {
     const { length } = data
     if (!Array.isArray(data) || !length) {
         return <Select {...props} >
@@ -36,7 +36,7 @@ export const buildSelect = (data: Array<any> = [], props: any = {}, { isShowPlea
     }
     // not Array<object>
     if (data[0] !== Object(data[0])) {
-        return buildArrOptions(data, props, { isShowPleaseSel, ...otherProps, })
+        return buildArrOptions(data as Array<string | number>, props, { isShowPleaseSel, ...otherProps, })
     }
     if (length >= 5 && props.isShowSearch !== false) {
         props = {
@@ -77,7 +77,7 @@ type objType = { id: valueType, value: valueType }
 * @param {Object}} props 下拉框props配置
 * @param {Bool} isShowPleaseSel 是显示请选择，默认显示
 */
-export const buildArrOptions = (data: any = [], props = {}, options: any): JSX.Element => {
+export const buildArrOptions = (data: Array<string | number> = [], props = {}, options: any): JSX.Element => {
     const arrData: Array<objType> = data.reduce((arr: Array<objType>, val: valueType, index: number) => {
         const obj: objType = Object.create(null)
         obj['id'] = index;
