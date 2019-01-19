@@ -65,11 +65,11 @@ export const buildSelect = (data: Array<object> | Array<string | number> = [], p
  * @param {Object} data 下来框数据，是一个数组，数组的单个值是Object,这里默认去key为id的设置为下拉框value，去key为value 设置为下拉框label
  * @param {Object} props 下拉框props配置
  * @param {Object} 可以手动设置数组单个值里面那个key对应option的value,哪个value key对应option的label
-       */
+*/
 export const buildIdValueOptions = buildSelect
 
 type valueType = number | string
-type objType = { id: valueType, value: valueType }
+type objType = Record<'id' | 'value', valueType>
 
 /**
  * 构建数组类型的Select 的 Options
