@@ -20,11 +20,13 @@
     },
     "license": "MIT",
     "pre-commit": [
-        "lint"
+        // "lint"
     ],
     "dependencies": {
         "antd": "^3.11.6",
+        "eslint": "^5.12.1",
         "extend": "^3.0.2",
+        "pre-commit": "^1.2.2",
         "react": "^16.7.0",
         "react-dom": "^16.7.0"
     },
